@@ -1,0 +1,144 @@
+﻿<Window x:Class="CustomerCare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomerCare"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Command="{Binding LoadCustomerCommand}" Content="Load Customer" />
+            <TextBox  Grid.Row="0" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding LoadCustomerField}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Username"/>
+            <TextBox  Grid.Row="1" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding Username}" />
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Vorname:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding SelectedKunde.Vorname}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Name:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="KundenId:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.KundenId}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated by:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.LastUpdatedBy}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Rechnungsadresse" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Straße:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Rechnungsadresse.Straße}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Hausnummer:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Rechnungsadresse.Hausnummer}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="ZipCode:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedKunde.Rechnungsadresse.ZipCode}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Last updated by:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SelectedKunde.Rechnungsadresse.LastUpdatedBy}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.Rechnungsadresse.LastUpdated}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Lieferadresse" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Straße:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Lieferadresse.Straße}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Hausnummer:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Lieferadresse.Hausnummer}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="ZipCode:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedKunde.Lieferadresse.ZipCode}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Last updated by:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SelectedKunde.Lieferadresse.LastUpdatedBy}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.Lieferadresse.LastUpdated}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <DataGrid ItemsSource="{Binding AvailableMobilfunkverträge}" SelectedItem="{Binding SelectedVertrag}" />
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="New Address"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Straße"/>
+            <TextBox  Grid.Row="1" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding NewAddressStraße}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hausnummer"/>
+            <TextBox  Grid.Row="2" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding NewAddressHausnummer}" />
+            <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Zip"/>
+            <TextBox  Grid.Row="3" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding NewAddressZipCode}" />
+            <Button Grid.Row="4" Grid.Column="0"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Command="{Binding AdressänderungRechnungsadresseCommand}" Content="Submit Rechnung" />
+            <Button Grid.Row="4" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Command="{Binding AdressänderungLieferadresseCommand}" Content="Submit Liefer" />
+        </Grid>
+    </Grid>
+</Window>
