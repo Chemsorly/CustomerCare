@@ -10,6 +10,7 @@ namespace CustomerCare.Data.Tests
 {
     /// <summary>
     /// Note: Tests should run on a freshly initialized environment (e.g. docker container)
+    /// Delete "LocalDB" LocalDB Database from SQL Overview if running locally and not in contianerized/isolated environment
     /// </summary>
     [TestClass()]
     public class DataManagerTests
