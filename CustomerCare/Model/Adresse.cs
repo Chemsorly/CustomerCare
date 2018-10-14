@@ -20,12 +20,6 @@ namespace CustomerCare.Model
             this.Kunde = pKunde;
         }
 
-        //[Key]
-        //public int AdresseId { get; set; }
-
-        //[ForeignKey(nameof(Model.Kunde.KundenId))]
-        //public AdressenTyp AdressenTyp {get;set;}
-
         [Required]
         public virtual Kunde Kunde { get; set; }
 

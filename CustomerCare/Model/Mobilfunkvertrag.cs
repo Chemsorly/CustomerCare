@@ -9,9 +9,6 @@ namespace CustomerCare.Model
 {
     public class Mobilfunkvertrag : BaseEntity
     {
-        /// <summary>
-        /// EF ctor
-        /// </summary>
         Mobilfunkvertrag() { }
 
         public Mobilfunkvertrag(Kunde pKunde)

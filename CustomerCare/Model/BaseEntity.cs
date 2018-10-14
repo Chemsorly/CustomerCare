@@ -41,6 +41,12 @@ namespace CustomerCare.Model
 
         public DateTime Created { get; set; } = DateTime.UtcNow;
 
+        /// <summary>
+        /// set a value with reflection. automatically updates metadata (such as: who edited what and when)
+        /// </summary>
+        /// <param name="pIssuer">name of entity issuing the change of a value</param>
+        /// <param name="pTargetProperty">the property to change</param>
+        /// <param name="pNewvalue">the new value for the target property</param>
         public void ChangeValue(String pIssuer, String pTargetProperty, object pNewvalue)
         {
             //check input values
@@ -64,8 +70,7 @@ namespace CustomerCare.Model
             //apply new value
             property.SetValue(this, Convert.ChangeType(pNewvalue, targetType));
             this.LastUpdatedBy = pIssuer;
-            this.LastUpdated = DateTime.UtcNow;
-            
+            this.LastUpdated = DateTime.UtcNow;            
         }
 
         //http://technico.qnownow.com/how-to-set-value-to-nullable-type-properties-using-reflection-in-c/

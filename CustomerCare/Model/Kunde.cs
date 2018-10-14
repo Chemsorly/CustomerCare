@@ -45,8 +45,6 @@ namespace CustomerCare.Model
             }
         }
 
-        //[ForeignKey(nameof(Rechnungsadresse))]
-        //public int RechnungsadresseId { get; set; }
         Rechnungsadresse _rechnungsadresse;
         [Required]
         public virtual Rechnungsadresse Rechnungsadresse
@@ -62,8 +60,6 @@ namespace CustomerCare.Model
             }
         }
 
-        //[ForeignKey(nameof(Lieferadresse))]
-        //public int LieferadresseId { get; set; }
         Lieferadresse _lieferadresse;
         public virtual Lieferadresse Lieferadresse
         {

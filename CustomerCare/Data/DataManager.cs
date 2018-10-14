@@ -12,8 +12,6 @@ namespace CustomerCare.Data
 {
     public class DataManager : ManagerBase
     {
-        EntityFrameworkContext dbcontext;
-
         KundenRepository Kunden;
         NetworkRepository Networks;
         TelefontarifeRepository Telefontarife;
@@ -23,7 +21,7 @@ namespace CustomerCare.Data
         {
             //init db
             bool needSeeding = false;
-            dbcontext = new EntityFrameworkContext();
+            var dbcontext = new EntityFrameworkContext();
             needSeeding = dbcontext.Database.CreateIfNotExists();
 
             //init repositories

@@ -15,7 +15,6 @@ namespace CustomerCare
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] String propertyName = "")
         {
-            //update field for lastUpdated
             PropertyChangedEventHandler handler = this.PropertyChanged;
             if (handler != null)
             {
