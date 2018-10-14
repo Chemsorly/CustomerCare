@@ -10,52 +10,41 @@ namespace CustomerCare.Data.Repositories
 {
     internal class NetworkRepository : BaseRepository<Network>
     {
-        internal NetworkRepository() : base() { }
+        internal NetworkRepository(BaseContext pContext) : base(pContext) { }
 
         public override void Create(Network item)
         {
-            using (var context = CreateContext())
-            {
-                context.Networks.Add(item);
-                context.SaveChanges();
-            }
+            this.Context.Networks.Add(item);
+            this.Context.SaveChanges();
         }
 
         public override void Delete(int id)
         {
-            using (var context = CreateContext())
+            var entity = this.Context.Networks.FirstOrDefault(t => t.NetworkId == id);
+            if (entity != null)
             {
-                var entity = context.Networks.FirstOrDefault(t => t.NetworkId == id);
-                if (entity != null)
-                {
-                    context.Networks.Remove(entity);
-                    context.SaveChanges();
-                }
+                this.Context.Networks.Remove(entity);
+                this.Context.SaveChanges();
             }
         }
 
         public override Network Get(int id)
         {
-            using (var context = CreateContext())
-                return context.Networks.FirstOrDefault(t => t.NetworkId == id);
+            return this.Context.Networks.FirstOrDefault(t => t.NetworkId == id);
         }
 
         public Network Get(String tag)
         {
-            using (var context = CreateContext())
-                return context.Networks.FirstOrDefault(t => t.Tag == tag);
+            return this.Context.Networks.FirstOrDefault(t => t.Tag == tag);
         }
 
         public override void Update(Network item)
         {
-            using (var context = CreateContext())
+            var entity = this.Context.Networks.FirstOrDefault(t => t.NetworkId == item.NetworkId);
+            if (entity != null)
             {
-                var entity = context.Networks.FirstOrDefault(t => t.NetworkId == item.NetworkId);
-                if (entity != null)
-                {
-                    context.Entry(entity).CurrentValues.SetValues(item);
-                    context.SaveChanges();
-                }
+                this.Context.Entry(entity).CurrentValues.SetValues(item);
+                this.Context.SaveChanges();
             }
         }
     }

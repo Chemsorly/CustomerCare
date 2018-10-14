@@ -12,13 +12,19 @@ namespace CustomerCare
     {
         DataManager DataManager;
 
+        public List<Telefontarif> Telefontarife => this.DataManager != null ? this.DataManager.GetTelefontarife() : new List<Telefontarif>();
+        public List<Datentarif> Datentarife => this.DataManager != null ? this.DataManager.GetDatentarife() : new List<Datentarif>();
+
         public override void Initialize()
         {
             DataManager = new DataManager();
         }
 
         public Kunde GetKunde(int id) { return this.DataManager.GetCustomer(id); }
-
+        public List<Kunde> GetKundeByName(String pName) { return DataManager.GetCustomerByName(pName); }
+        public List<Kunde> GetKundeByVorname(String pName) { return DataManager.GetCustomerByVorname(pName); }
+        public Kunde GetKundeByRufnummer(String pRufnummer) { return DataManager.GetCustomerByRufnummer(pRufnummer); }
+        
         public void ChangeAdressOfCustomer(String pIssuer, Kunde pCustomer, Adresse pNewAdress)
         {
             this.DataManager.ChangeAdressOfCustomer(pIssuer, pCustomer, pNewAdress);        

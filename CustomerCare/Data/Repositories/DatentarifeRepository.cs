@@ -10,52 +10,46 @@ namespace CustomerCare.Data.Repositories
 {
     internal class DatentarifRepository : BaseRepository<Datentarif>
     {
-        internal DatentarifRepository() : base() { }
+        internal DatentarifRepository(BaseContext pContext) : base(pContext) { }
 
         public override void Create(Datentarif item)
         {
-            using (var context = CreateContext())
-            {
-                context.Datentarife.Add(item);
-                context.SaveChanges();
-            }
+            this.Context.Datentarife.Add(item);
+            this.Context.SaveChanges();
         }
 
         public override void Delete(int id)
         {
-            using (var context = CreateContext())
+            var entity = this.Context.Datentarife.FirstOrDefault(t => t.TarifId == id);
+            if (entity != null)
             {
-                var entity = context.Datentarife.FirstOrDefault(t => t.TarifId == id);
-                if (entity != null)
-                {
-                    context.Datentarife.Remove(entity);
-                    context.SaveChanges();
-                }
+                this.Context.Datentarife.Remove(entity);
+                this.Context.SaveChanges();
             }
         }
 
         public override Datentarif Get(int id)
         {
-            using (var context = CreateContext())
-                return context.Datentarife.FirstOrDefault(t => t.TarifId == id);
+            return this.Context.Datentarife.FirstOrDefault(t => t.TarifId == id);
         }
 
         public Datentarif Get(String name)
         {
-            using (var context = CreateContext())
-                return context.Datentarife.FirstOrDefault(t => t.Name == name);
+            return this.Context.Datentarife.FirstOrDefault(t => t.Name == name);
+        }
+
+        public List<Datentarif> GetAll()
+        {
+            return this.Context.Datentarife.ToList();
         }
 
         public override void Update(Datentarif item)
         {
-            using (var context = CreateContext())
+            var entity = this.Context.Datentarife.FirstOrDefault(t => t.TarifId == item.TarifId);
+            if (entity != null)
             {
-                var entity = context.Datentarife.FirstOrDefault(t => t.TarifId == item.TarifId);
-                if (entity != null)
-                {
-                    context.Entry(entity).CurrentValues.SetValues(item);
-                    context.SaveChanges();
-                }
+                this.Context.Entry(entity).CurrentValues.SetValues(item);
+                this.Context.SaveChanges();
             }
         }
     }

@@ -13,77 +13,53 @@ namespace CustomerCare.Data.Repositories
 {
     internal class KundenRepository : BaseRepository<Kunde>
     {
-        internal KundenRepository() : base() { }
+        internal KundenRepository(BaseContext pContext) : base(pContext) { }
 
         public override void Create(Kunde item)
         {
-            using (var context = CreateContext())
-            {
-                context.Kunden.Add(item);
-                context.SaveChanges();
-            }
+            this.Context.Kunden.Add(item);
+            this.Context.SaveChanges();
         }
 
         public override void Delete(int id)
         {
-            using (var context = CreateContext())
+            var entity = this.Context.Kunden.FirstOrDefault(t => t.KundenId == id);
+            if (entity != null)
             {
-                var entity = context.Kunden.FirstOrDefault(t => t.KundenId == id);
-                if (entity != null)
-                {
-                    context.Kunden.Remove(entity);
-                    context.SaveChanges();
-                }
-            }               
+                this.Context.Kunden.Remove(entity);
+                this.Context.SaveChanges();
+            }
         }
 
         public override Kunde Get(int id)
         {
-            using (var context = CreateContext())
-            {
-                var kunde = context.Kunden.FirstOrDefault(t => t.KundenId == id);
-                if (kunde == null)
-                    return null;
+            return this.Context.Kunden.FirstOrDefault(t => t.KundenId == id);  
+        }
 
-                var entry = context.Entry(kunde);
-                entry.Reference(t => t.Lieferadresse).Load();
-                entry.Reference(t => t.Rechnungsadresse).Load();
-                entry.Collection(t => t.Mobilfunkvertraege).Load();
-                entry.Entity.Mobilfunkvertraege.ForEach(t => context.Entry(t).Reference(y => y.Datentarif).Load());
-                entry.Entity.Mobilfunkvertraege.ForEach(t => context.Entry(t).Reference(y => y.Telefontarif).Load());
+        public List<Kunde> GetByName(String pName)
+        {
+            return this.Context.Kunden.Where(t => t.Name == pName).ToList();
+        }
 
-                //entry.Collection(t => t.Mobilfunkvertraege.Select(y => y.Datentarif).Load()
-                //entry.Collection(t => t.Mobilfunkvertraege.Select(y => y.Telefontarif)).Load();
-                return entry.Entity;
-            }
-               
-                //return this.GetAllIncluding(context.Kunden, 
-                //    t => t.Lieferadresse,
-                //    t => t.Rechnungsadresse,
-                //    t => t.Mobilfunkvertraege)
-                //    //t => t.Mobilfunkvertraege.Select(y => y.Datentarif),
-                //    //t => t.Mobilfunkvertraege.Select(y => y.Telefontarif),
-                //    //t => t.Mobilfunkvertraege.Select(y => y.Kunde))
-                //    .FirstOrDefault(t => t.KundenId == id);       
+        public List<Kunde> GetByVorname(String pVorname)
+        {
+            return this.Context.Kunden.Where(t => t.Vorname == pVorname).ToList();
+        }
+
+        public Kunde GetByRufnummer(String pRufnummer)
+        {
+            return this.Context.Kunden.FirstOrDefault(t => t.Mobilfunkvertraege.Any(u => u.Rufnummer == pRufnummer));
         }
 
         public override void Update(Kunde item)
         {
-            using (var context = CreateContext())
+            var entity = this.Context.Kunden.FirstOrDefault(t => t.KundenId == item.KundenId);
+            if (entity != null)
             {
-                var entity = context.Kunden.FirstOrDefault(t => t.KundenId == item.KundenId); // Entry(item);
-                if (entity != null)
-                {
-                    //context.Kunden.Attach(item);
-                    context.Entry(entity).CurrentValues.SetValues(item);
-                    //entity.Mobilfunkvertraege = item.Mobilfunkvertraege;
-                    //entity.Rechnungsadresse = item.Rechnungsadresse;
-                    //entity.Lieferadresse = item.Lieferadresse;
+                this.Context.Entry(entity).CurrentValues.SetValues(item);
+                this.Context.SaveChanges();
+            }
 
-                    this.ApplyChanges(entity, item);
-                    context.SaveChanges();
-                }
-            }  
         }
 
     }

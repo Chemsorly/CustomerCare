@@ -22,10 +22,11 @@ namespace CustomerCare
                 if (value != null)
                 {
                     _selectedKunde = value;
-                    NotifyPropertyChanged();
 
                     //load Mobilfunkverträge
                     this.AvailableMobilfunkverträge = _selectedKunde.Mobilfunkvertraege.ToList();
+
+                    NotifyPropertyChanged();
                 }
             }
         }
@@ -43,6 +44,12 @@ namespace CustomerCare
                 }
             }
         }
+
+        public List<Telefontarif> AvailableTelefontarife => Core != null ? Core.Telefontarife : new List<Telefontarif>();
+        public Telefontarif SelectedTelefontarif { get; set; }
+
+        public List<Datentarif> AvailableDatentarife => Core != null ? Core.Datentarife : new List<Datentarif>();
+        public Datentarif SelectedDatentarif { get; set; }
 
         Mobilfunkvertrag _selectedVertrag;
         public Mobilfunkvertrag SelectedVertrag
@@ -63,7 +70,8 @@ namespace CustomerCare
         public ICommand LoadCustomerCommand { get; set; }
         public ICommand AdressänderungRechnungsadresseCommand { get; set; }
         public ICommand AdressänderungLieferadresseCommand { get; set; }
-        public ICommand TarifwechselCommand { get; set; }
+        public ICommand SetTelefontarifCommand { get; set; }
+        public ICommand SetDatentarifCommand { get; set; }
 
         public String LoadCustomerField { get; set; }
         public String NewAddressStraße { get; set; }
@@ -75,7 +83,8 @@ namespace CustomerCare
             LoadCustomerCommand = new RelayCommand<object>(LoadCustomerClicked);
             AdressänderungRechnungsadresseCommand = new RelayCommand<object>(AdressänderungRechnungsadresseClicked);
             AdressänderungLieferadresseCommand = new RelayCommand<object>(AdressänderungLieferadresseClicked);
-            TarifwechselCommand = new RelayCommand<object>(TarifwechselClicked);
+            SetTelefontarifCommand = new RelayCommand<object>(SetTelefontarifClicked);
+            SetDatentarifCommand = new RelayCommand<object>(SetDatentarifClicked);
             Core = new Core();
         }
         public override void Initialize()
@@ -92,10 +101,38 @@ namespace CustomerCare
             int value;
             if (int.TryParse(LoadCustomerField, out value))
             {
+                //is int, check for customer id
                 var kunde = Core.GetKunde(value);
                 if (kunde != null)
+                {
                     this.SelectedKunde = kunde;
+                    return;
+                }                    
             }
+
+            //check for alternatives: Rufnummer
+            Kunde targetKunde = Core.GetKundeByRufnummer(LoadCustomerField);
+            if(targetKunde != null)
+            {
+                this.SelectedKunde = targetKunde;
+                return;
+            }                
+
+            //check for Name, Vorname
+            //returns Collection, for simplicity pick first found element
+            var kunden = Core.GetKundeByName(LoadCustomerField);
+            if(kunden.Any())
+            {
+                this.SelectedKunde = kunden.First();
+                return;
+            }
+                
+            kunden = Core.GetKundeByVorname(LoadCustomerField);
+            if (kunden.Any())
+            {
+                this.SelectedKunde = kunden.First();
+                return;
+            }                
         }
 
         void AdressänderungLieferadresseClicked(object obj)
@@ -125,7 +162,6 @@ namespace CustomerCare
                             Hausnummer = NewAddressHausnummer,
                             ZipCode = zip,
                             LastUpdatedBy = Username,
-                            //AdressenTyp = pTyp
                         };
                         break;
                     case AdressenTyp.Lieferadresse:
@@ -135,7 +171,6 @@ namespace CustomerCare
                             Hausnummer = NewAddressHausnummer,
                             ZipCode = zip,
                             LastUpdatedBy = Username,
-                            //AdressenTyp = pTyp
                         };
                         break;
                 }
@@ -144,9 +179,20 @@ namespace CustomerCare
             }
         }
 
-        void TarifwechselClicked(object obj)
+        void SetTelefontarifClicked(object obj)
         {
+            SetTarif(SelectedTelefontarif);
+        }
 
+        void SetDatentarifClicked(object obj)
+        {
+            SetTarif(SelectedDatentarif);
+        }
+
+        void SetTarif(Tarif pNewTarif)
+        {
+            if(!String.IsNullOrWhiteSpace(this.Username) && this.SelectedVertrag != null && pNewTarif != null)
+                Core.ChangeTarifOfMobilfunkvertrag(this.Username, this.SelectedVertrag, pNewTarif);
         }
     }
 }

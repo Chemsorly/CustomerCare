@@ -12,6 +12,8 @@ namespace CustomerCare.Data
 {
     public class DataManager : ManagerBase
     {
+        EntityFrameworkContext dbcontext;
+
         KundenRepository Kunden;
         NetworkRepository Networks;
         TelefontarifeRepository Telefontarife;
@@ -21,14 +23,14 @@ namespace CustomerCare.Data
         {
             //init db
             bool needSeeding = false;
-            using (var context = new EntityFrameworkContext())
-                needSeeding = context.Database.CreateIfNotExists();
+            dbcontext = new EntityFrameworkContext();
+            needSeeding = dbcontext.Database.CreateIfNotExists();
 
             //init repositories
-            Kunden = new KundenRepository();
-            Networks = new NetworkRepository();
-            Telefontarife = new TelefontarifeRepository();
-            Datentarife = new DatentarifRepository();
+            Kunden = new KundenRepository(dbcontext);
+            Networks = new NetworkRepository(dbcontext);
+            Telefontarife = new TelefontarifeRepository(dbcontext);
+            Datentarife = new DatentarifRepository(dbcontext);
 
             //seed if necessary
             if (needSeeding)
@@ -43,9 +45,23 @@ namespace CustomerCare.Data
 
         }
 
+        public List<Datentarif> GetDatentarife()
+        {
+            return this.Datentarife.GetAll();
+        }
+
+        public List<Telefontarif> GetTelefontarife()
+        {
+            return this.Telefontarife.GetAll();
+        }
+
         #region RequestedFunctionality
 
         public Kunde GetCustomer(int id) { return Kunden.Get(id); }
+        public List<Kunde> GetCustomerByName(String pName) { return Kunden.GetByName(pName); }
+        public List<Kunde> GetCustomerByVorname(String pName) { return Kunden.GetByVorname(pName); }
+        public Kunde GetCustomerByRufnummer(String pRufnummer) { return Kunden.GetByRufnummer(pRufnummer); }
+
         public void ChangeAdressOfCustomer(String pIssuer, Kunde pCustomer, Adresse pNewAdress)
         {
             try
@@ -78,10 +94,13 @@ namespace CustomerCare.Data
                 //check if telefontarif
                 if (pNewTarif is Telefontarif)
                     pMobilfunkvertrag.ChangeValue(pIssuer, nameof(Mobilfunkvertrag.Telefontarif), pNewTarif);
-                //else if (pNewTarif is Datentarif)
-                //    pMobilfunkvertrag.ChangeValue(pIssuer, nameof(Mobilfunkvertrag.Datentarif), pNewTarif);
+                else if (pNewTarif is Datentarif)
+                    pMobilfunkvertrag.ChangeValue(pIssuer, nameof(Mobilfunkvertrag.Datentarif), pNewTarif);
                 else
                     throw new Exception("unknown type of Tarif supplied");
+
+                //submit
+                Kunden.Update(pMobilfunkvertrag.Kunde);
             }
             catch (Exception ex)
             {

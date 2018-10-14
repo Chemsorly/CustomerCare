@@ -51,14 +51,14 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Vorname:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding SelectedKunde.Vorname}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Name:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="KundenId:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.KundenId}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated by:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.LastUpdatedBy}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Vorname:" />
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding SelectedKunde.Vorname}" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Name:" />
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Name}" />
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="KundenId:" />
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.KundenId}" />
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated by:" />
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.LastUpdatedBy}" />
         </Grid>
         <Grid Grid.Row="0" Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -75,17 +75,17 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Rechnungsadresse" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Straße:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Rechnungsadresse.Straße}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Hausnummer:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Rechnungsadresse.Hausnummer}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="ZipCode:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedKunde.Rechnungsadresse.ZipCode}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Last updated by:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SelectedKunde.Rechnungsadresse.LastUpdatedBy}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.Rechnungsadresse.LastUpdated}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Rechnungsadresse" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Straße:" />
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Rechnungsadresse.Straße}" />
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Hausnummer:" />
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Rechnungsadresse.Hausnummer}" />
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="ZipCode:" />
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedKunde.Rechnungsadresse.ZipCode}" />
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Last updated by:" />
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SelectedKunde.Rechnungsadresse.LastUpdatedBy}" />
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated:" />
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.Rechnungsadresse.LastUpdated}" />
         </Grid>
         <Grid Grid.Row="0" Grid.Column="3">
             <Grid.ColumnDefinitions>
@@ -102,17 +102,17 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Lieferadresse" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Straße:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Lieferadresse.Straße}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Hausnummer:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Lieferadresse.Hausnummer}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="ZipCode:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedKunde.Lieferadresse.ZipCode}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Last updated by:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SelectedKunde.Lieferadresse.LastUpdatedBy}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.Lieferadresse.LastUpdated}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Lieferadresse" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Straße:" />
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedKunde.Lieferadresse.Straße}" />
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Hausnummer:" />
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedKunde.Lieferadresse.Hausnummer}" />
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="ZipCode:" />
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedKunde.Lieferadresse.ZipCode}" />
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Last updated by:" />
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SelectedKunde.Lieferadresse.LastUpdatedBy}" />
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Last updated:" />
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SelectedKunde.Lieferadresse.LastUpdated}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <DataGrid ItemsSource="{Binding AvailableMobilfunkverträge}" SelectedItem="{Binding SelectedVertrag}" />
@@ -130,15 +130,82 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="New Address"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Straße"/>
+            <TextBlock Grid.Row="0" Grid.Column="0"  Text="New Address"/>
+            <TextBlock Grid.Row="1" Grid.Column="0"  Text="Straße"/>
             <TextBox  Grid.Row="1" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding NewAddressStraße}" />
-            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hausnummer"/>
+            <TextBlock Grid.Row="2" Grid.Column="0"  Text="Hausnummer"/>
             <TextBox  Grid.Row="2" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding NewAddressHausnummer}" />
-            <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Zip"/>
+            <TextBlock Grid.Row="3" Grid.Column="0"  Text="Zip"/>
             <TextBox  Grid.Row="3" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Text="{Binding NewAddressZipCode}" />
             <Button Grid.Row="4" Grid.Column="0"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Command="{Binding AdressänderungRechnungsadresseCommand}" Content="Submit Rechnung" />
             <Button Grid.Row="4" Grid.Column="1"  Height="20" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Command="{Binding AdressänderungLieferadresseCommand}" Content="Submit Liefer" />
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Mobilfunkvertrag" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="MonatlicherPreis:" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedVertrag.MonatlicherPreis}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Rufnummer:" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedVertrag.Rufnummer}" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Telefontarif:" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedVertrag.Telefontarif.Name}" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Datentarif:" />
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedVertrag.Datentarif.Name}" />
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Last updated by:" />
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding SelectedVertrag.LastUpdatedBy}"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Last updated:" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding SelectedVertrag.LastUpdated}" />
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Set Telefontarif" />
+            <DataGrid Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="2" ItemsSource="{Binding AvailableTelefontarife}" SelectedItem="{Binding SelectedTelefontarif}"/>
+            <Button Grid.Row="7" Content="Set" Command="{Binding SetTelefontarifCommand}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Set Datentarif" />
+            <DataGrid Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="2" ItemsSource="{Binding AvailableDatentarife}" SelectedItem="{Binding SelectedDatentarif}"/>
+            <Button Grid.Row="7" Content="Set" Command="{Binding SetDatentarifCommand}"/>
         </Grid>
     </Grid>
 </Window>

@@ -11,9 +11,9 @@ namespace CustomerCare.Data.Repositories
 {
     internal abstract class BaseRepository<T> : IRepository<T> where T : class
     {
-        protected BaseContext CreateContext() { return new EntityFrameworkContext(); }
+        protected BaseContext Context;
 
-        protected BaseRepository() { }
+        protected BaseRepository(BaseContext pContext) { this.Context = pContext; }
 
         public abstract void Create(T item);
 
@@ -23,25 +23,25 @@ namespace CustomerCare.Data.Repositories
 
         public abstract void Update(T item);
 
-        protected void ApplyChanges(object applyTo, object applyFrom)
-        {
-            var inproperties = applyTo.GetType().GetProperties().Where(t => t.CanWrite);
-            foreach (var prop in inproperties)
-            {
-                var fromvalue = applyFrom.GetType().GetProperty(prop.Name).GetValue(applyFrom);
-                if (prop.GetValue(applyTo) != fromvalue)
-                    prop.SetValue(applyTo, fromvalue);
-            }
-        }
+        //protected void ApplyChanges(object applyTo, object applyFrom)
+        //{
+        //    var inproperties = applyTo.GetType().GetProperties().Where(t => t.CanWrite);
+        //    foreach (var prop in inproperties)
+        //    {
+        //        var fromvalue = applyFrom.GetType().GetProperty(prop.Name).GetValue(applyFrom);
+        //        if (prop.GetValue(applyTo) != fromvalue)
+        //            prop.SetValue(applyTo, fromvalue);
+        //    }
+        //}
 
-        public IQueryable<T> GetAllIncluding(IQueryable<T> queryable, params Expression<Func<T, object>>[] includeProperties)
-        {
-            foreach (Expression<Func<T, object>> includeProperty in includeProperties)
-            {
-                queryable = queryable.Include<T, object>(includeProperty);
-            }
+        //public IQueryable<T> GetAllIncluding(IQueryable<T> queryable, params Expression<Func<T, object>>[] includeProperties)
+        //{
+        //    foreach (Expression<Func<T, object>> includeProperty in includeProperties)
+        //    {
+        //        queryable = queryable.Include<T, object>(includeProperty);
+        //    }
 
-            return queryable;
-        }
+        //    return queryable;
+        //}
     }
 }
